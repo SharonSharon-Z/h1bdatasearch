@@ -13,7 +13,6 @@ app.use(express.json());// access req.body
 //     try {
 //         // console.log(req.body);
 //         const {JOB_TITLE, WAGE_RATE, WORKSITE_CITY, WORKSITE_COUNTY} = req.body;
-        
 //         const newCase = await pool.query(
 //             "INSERT INTO permdata (JOB_TITLE, WAGE_RATE,WORKSITE_CITY, WORKSITE_COUNTY) VALUES($1, $2, $3, $4) RETURNING *", [JOB_TITLE, WAGE_RATE, WORKSITE_CITY, WORKSITE_COUNTY]
 //         );
@@ -47,11 +46,21 @@ app.use(express.json());// access req.body
 app.get("/cases", async (req, res) => {
     try {
         // res.json(req.query);
-        const {title, company, city, county, state, year, limit} = req.query;
-        
-        const filteredCases = await pool.query("SELECT * FROM LCA_Disclosure_Data_FY2022 WHERE JOB_TITLE ILIKE $1 AND EMPLOYER_NAME ILIKE $2 AND WORKSITE_CITY LIKE $3 AND WORKSITE_COUNTY ILIKE $4 AND WORKSITE_STATE ILIKE $5 AND YEAR ILIKE $6 ORDER BY CASE_NUMBER LIMIT $7", [`%${title}%`, `%${company}%`, `%${city}%`, `%${county}%`, `%${state}%`, `%${year}%`, `${limit}`]);
-                                                                       
-        
+        const { title, company, city, county, state, year, limit } = req.query;
+
+        const filteredCases = await pool.query(
+            "SELECT * FROM LCA_Disclosure_Data_FY2022 WHERE JOB_TITLE ILIKE $1 AND EMPLOYER_NAME ILIKE $2 AND WORKSITE_CITY LIKE $3 AND WORKSITE_COUNTY ILIKE $4 AND WORKSITE_STATE ILIKE $5 AND YEAR ILIKE $6 ORDER BY CASE_NUMBER LIMIT $7",
+            [
+                `%${title}%`,
+                `%${company}%`,
+                `%${city}%`,
+                `%${county}%`,
+                `%${state}%`,
+                `%${year}%`,
+                `${limit}`,
+            ]
+        );
+
         // console.log(someCases.rows);
         res.json(filteredCases.rows);
     } catch (error) {
