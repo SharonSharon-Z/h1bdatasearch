@@ -14,36 +14,34 @@ const SearchCases = () => {
     const [limit, setLimit] = useState(20);
     const [cases, setCases] = useState([]);
     const server_url = "https://h1b-salary-data-api.onrender.com";
+    // const server_url = "http://localhost:5000";
 
-    useEffect(() => {
-        // e.preventDefault();
-        if (
-            titleSearch !== "" ||
-            companySearch !== "" ||
-            citySearch !== "" ||
-            countySearch !== "" ||
-            stateSearch !== "" ||
-            yearSearch !== ""
-        ) {
-            fetch(
-                `${server_url}/cases/?title=${titleSearch}&company=${companySearch}&city=${citySearch}&county=${countySearch}&state=${stateSearch}&year=${yearSearch}&limit=${limit}`
-            )
-                .then((res) => res.json())
-                .then((data) => setCases(data));
-            console.log("Fetch Done");
-        }
-    }, [
-        titleSearch,
-        companySearch,
-        citySearch,
-        countySearch,
-        stateSearch,
-        yearSearch,
-        limit,
-    ]);
-    // const onLoadMore = async (e) => {
-    //     e.pre
-    // }
+    // useEffect(() => {
+    //     // e.preventDefault();
+    //     if (
+    //         titleSearch !== "" ||
+    //         companySearch !== "" ||
+    //         citySearch !== "" ||
+    //         countySearch !== "" ||
+    //         stateSearch !== "" ||
+    //         yearSearch !== ""
+    //     ) {
+    //         fetch(
+    //             `${server_url}/cases/?title=${titleSearch}&company=${companySearch}&city=${citySearch}&county=${countySearch}&state=${stateSearch}&year=${yearSearch}&limit=${limit}`
+    //         )
+    //             .then((res) => res.json())
+    //             .then((data) => setCases(data));
+    //         console.log("Fetch Done");
+    //     }
+    // }, [
+    //     titleSearch,
+    //     companySearch,
+    //     citySearch,
+    //     countySearch,
+    //     stateSearch,
+    //     yearSearch,
+    //     limit,
+    // ]);
 
     const onSubmitForm = async (e) => {
         e.preventDefault();
@@ -62,8 +60,12 @@ const SearchCases = () => {
         }
     };
 
-    const load200More = () => setLimit(limit + 200);
-    const load1000More = () => setLimit(limit + 1000);
+    // const load200More = async (e) => {
+    //     // e.preventDefault();
+    //     setLimit(limit + 200);
+    // };
+
+    // const load1000More = () => setLimit(limit + 1000);
 
     return (
         <>
@@ -272,11 +274,11 @@ const SearchCases = () => {
                             </select>
                         </div>
                     </div>
-                    {/* <div className="text-center mt-4">
+                    <div className="text-center mt-4">
                         <button type="submit" className="btn btn-success ">
                             Search
                         </button>
-                    </div> */}
+                    </div>
                 </form>
 
                 <table className="table table-striped mt-4">
@@ -318,7 +320,7 @@ const SearchCases = () => {
                         ))}
                     </tbody>
                 </table>
-                <div className="container text-center row">
+                {/* <div className="container text-center row">
                     <div className="col">
                         {cases.length > 0 && cases.length === limit && (
                             <button
@@ -326,7 +328,7 @@ const SearchCases = () => {
                                 className="btn btn-success"
                                 onClick={load200More}
                             >
-                                Load 200 More
+                                Load More
                             </button>
                         )}
                     </div>
@@ -340,11 +342,9 @@ const SearchCases = () => {
                                 Load 1000 More
                             </button>
                         )}
-                    </div>
-                </div>
-                {/* {status === "done" && cases.length === 0 && (
-                        <p>No Result</p>
-                    )} */}
+                    </div> 
+                </div> */}
+                {/* {status === "done" && cases.length === 0 && (<p>No Result</p>)} */}
             </div>
         </>
     );
