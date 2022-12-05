@@ -13,7 +13,7 @@ const SearchCases = () => {
     const [yearSearch, setYearSearch] = useState("");
     const [limit, setLimit] = useState(20);
     const [cases, setCases] = useState([]);
-    const SERVER_URL = "https://h1b-salary-data-api.onrender.com";
+    const server_url = "https://h1b-salary-data-api.onrender.com";
 
     useEffect(() => {
         // e.preventDefault();
@@ -26,7 +26,7 @@ const SearchCases = () => {
             yearSearch !== ""
         ) {
             fetch(
-                `${SERVER_URL}/cases/?title=${titleSearch}&company=${companySearch}&city=${citySearch}&county=${countySearch}&state=${stateSearch}&year=${yearSearch}&limit=${limit}`
+                `${server_url}/cases/?title=${titleSearch}&company=${companySearch}&city=${citySearch}&county=${countySearch}&state=${stateSearch}&year=${yearSearch}&limit=${limit}`
             )
                 .then((res) => res.json())
                 .then((data) => setCases(data));
@@ -48,7 +48,7 @@ const SearchCases = () => {
         e.preventDefault();
         try {
             const response = await fetch(
-                `${SERVER_URL}/cases/?title=${titleSearch}&company=${companySearch}&city=${citySearch}&county=${countySearch}&state=${stateSearch}&year=${yearSearch}&limit=${limit}`
+                `${server_url}/cases/?title=${titleSearch}&company=${companySearch}&city=${citySearch}&county=${countySearch}&state=${stateSearch}&year=${yearSearch}&limit=${limit}`
             );
             const parsedResponse = await response.json();
             //   console.log(parsedResponse);
