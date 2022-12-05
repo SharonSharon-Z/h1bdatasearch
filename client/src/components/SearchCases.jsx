@@ -13,7 +13,7 @@ const SearchCases = () => {
     const [yearSearch, setYearSearch] = useState("");
     const [limit, setLimit] = useState(20);
     const [cases, setCases] = useState([]);
-    const server_url = "https://h1b-salary-data-api.onrender.com";
+    const server_url = "https://h1b-salary-data-api2.onrender.com";
     // const server_url = "http://localhost:5000";
 
     // useEffect(() => {
