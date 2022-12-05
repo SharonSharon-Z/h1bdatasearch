@@ -54,7 +54,7 @@ const SearchCases = () => {
             setCases(parsedResponse);
             // setStatus("done");
             // setLimit(0);
-            console.log("Fetch Done");
+            console.log(`Fetch Done. from "${server_url}"`);
         } catch (error) {
             console.log(error.message);
         }
