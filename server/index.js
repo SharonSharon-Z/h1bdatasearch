@@ -64,7 +64,7 @@ app.get("/cases", async (req, res) => {
             ]
         );
 
-        // console.log(someCases.rows);
+        // console.log("here");
         res.json(filteredCases.rows);
     } catch (error) {
         console.log(error.message);

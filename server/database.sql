@@ -30,7 +30,7 @@ FROM LCA_Disclosure_Data_FY2022;
 
 DROP TABLE lca_disclosure_data_fy2022_q3;
 
-\COPY LCA_Disclosure_Data_FY2022 from '/Users/XuerongZhang/Desktop/file3.csv' DELIMITER ',' CSV HEADER;
+\COPY LCA_Disclosure_Data_FY2022 from '/Users/XuerongZhang/Desktop/file4.csv' DELIMITER ',' CSV HEADER;
 
 SELECT *
 FROM LCA_Disclosure_Data_FY2022
