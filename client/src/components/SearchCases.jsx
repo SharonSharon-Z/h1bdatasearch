@@ -30,6 +30,7 @@ const SearchCases = () => {
             )
                 .then((res) => res.json())
                 .then((data) => setCases(data));
+            console.log("Fetch Done");
         }
     }, [
         titleSearch,
